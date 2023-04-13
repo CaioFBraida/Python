@@ -16,13 +16,14 @@ def main():
 
 
 def imprime_raizes(a, b, c):
-    if delta(a, b, c) > 0:
+    d = delta(a, b, c)
+    if d > 0:
         print("A equação possui 2 raízes.")
-        raiz1 = (-b + math.sqrt(delta(a, b, c))) / 2 * a
-        raiz2 = (-b - math.sqrt(delta(a, b, c))) / 2 * a
+        raiz1 = (-b + math.sqrt(d)) / 2 * a
+        raiz2 = (-b - math.sqrt(d)) / 2 * a
         print("primeira raiz = ", raiz1, " segunda raiz : ", raiz2)
 
-    elif delta(a, b, c) == 0:
+    elif d == 0:
         print("A equação possui 1 raízes.")
         raiz = -b / (2 * a)
         print("A raiz vale : ", raiz)
