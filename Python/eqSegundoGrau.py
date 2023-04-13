@@ -30,3 +30,5 @@ def imprime_raizes(a, b, c):
 
     else:
         print("A equação não possuiu raizes")
+
+main()
