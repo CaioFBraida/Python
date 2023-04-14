@@ -21,20 +21,24 @@ def computador_escolhe_jogada(n, m):
 def usuario_escolhe_jogada(n, m):
     naoAcertou = True
     valorJogadoUsuario = int(input("Quantas peças você vai tirar? "))
+    print("")
     while (naoAcertou):
         if (valorJogadoUsuario <= m and valorJogadoUsuario > 0):
             naoAcertou = False
         else:
             print("Oops! Jogada inválida! Tente de novo.")
+            print("")
             valorJogadoUsuario = int(input("Quantas peças você vai tirar? "))
     return valorJogadoUsuario
 
 
 def partida():
-    n = int(input("Digite o número de peças "))
-    m = int(input("Digite o número max de peças a serem retiradas "))
+    n = int(input("Quantas peças? "))
+    m = int(input("Limite de peças por jogada? "))
     if (n % (m+1) == 0):
+        print("")
         print("Você começa!")
+        print("")
         while (n > 0):
             usuarioVaiTirar = usuario_escolhe_jogada(n, m)
             n = n - usuarioVaiTirar
@@ -44,8 +48,10 @@ def partida():
                 print("Você tirou uma peça.")
             if (n > 1):
                 print("Agora restam " + str(n) + " peças no tabuleiro.")
+                print("")
             if (n == 1):
                 print("Agora resta apenas uma peça no tabuleiro.")
+                print("")
 
             compVaiTirar = computador_escolhe_jogada(n, m)
             n = n - compVaiTirar
@@ -56,13 +62,17 @@ def partida():
 
             if (n > 1):
                 print("Agora restam " + str(n) + " peças no tabuleiro.")
+                print("")
             if (n == 1):
                 print("Agora resta apenas uma peça no tabuleiro.")
+                print("")
 
-        print("O computador ganhou!")
+        print("Fim do jogo! O computador ganhou!")
 
     else:
+        print("")
         print("Computador começa!")
+        print("")
         while (n > 0):
             compVaiTirar = computador_escolhe_jogada(n, m)
             n = n - compVaiTirar
@@ -73,8 +83,10 @@ def partida():
 
             if (n > 1):
                 print("Agora restam " + str(n) + " peças no tabuleiro.")
+                print("")
             if (n == 1):
                 print("Agora resta apenas uma peça no tabuleiro.")
+                print("")
 
             if (n > 0):
                 usuarioVaiTirar = usuario_escolhe_jogada(n, m)
@@ -85,22 +97,30 @@ def partida():
                     print("Você tirou uma peça.")
                 if (n > 1):
                     print("Agora restam " + str(n) + " peças no tabuleiro.")
+                    print("")
                 if (n == 1):
                     print("Agora resta apenas uma peça no tabuleiro.")
+                    print("")
 
-        print("O computador ganhou!")
+        print("Fim do jogo! O computador ganhou!")
 
 def campeonato():
     print("**** Rodada 1 ****")
+    print("")
     partida()
-    print("Placar: Você 0 X 1 Computador")
     
+    print("")
     print("**** Rodada 2 ****")
+    print("")
     partida()
-    print("Placar: Você 0 X 2 Computador")
 
+    print("")
     print("**** Rodada 3 ****")
+    print("")
     partida()
+    print("")
+    print("**** Final do campeonato! ****")
+    print("")
     print("Placar: Você 0 X 3 Computador")
 
 
@@ -109,10 +129,15 @@ def main():
     print("Bem-vindo ao jogo do NIM! Escolha:")
     print()
     print("1 - para jogar uma partida isolada")
-    print("2 - para jogar um campeonato ")
-    verifica = int(input())
-
-    campeonato()
+    
+    verifica = int(input("2 - para jogar um campeonato "))
+    if(verifica == 1):
+        partida()
+    else:
+        print("")
+        print("Voce escolheu um campeonato!")
+        print("")
+        campeonato()
 
 
 main()
