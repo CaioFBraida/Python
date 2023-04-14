@@ -63,7 +63,6 @@ def partida():
 
     else:
         print("Computador começa!")
-        # problema pode ser quando o pc ganha ele continua a executar esse codigo
         while (n > 0):
             compVaiTirar = computador_escolhe_jogada(n, m)
             n = n - compVaiTirar
@@ -91,12 +90,29 @@ def partida():
 
         print("O computador ganhou!")
 
+def campeonato():
+    print("**** Rodada 1 ****")
+    partida()
+    print("Placar: Você 0 X 1 Computador")
+    
+    print("**** Rodada 2 ****")
+    partida()
+    print("Placar: Você 0 X 2 Computador")
+
+    print("**** Rodada 3 ****")
+    partida()
+    print("Placar: Você 0 X 3 Computador")
+
+
 
 def main():
-    # n = int(input("Digite o número de peças "))
-    # m = int(input("Digite o número max de peças a serem retiradas "))
-    # print(computador_escolhe_jogada(n, m))
-    partida()
+    print("Bem-vindo ao jogo do NIM! Escolha:")
+    print()
+    print("1 - para jogar uma partida isolada")
+    print("2 - para jogar um campeonato ")
+    verifica = int(input())
+
+    campeonato()
 
 
 main()
