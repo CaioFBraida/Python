@@ -21,14 +21,15 @@ def computador_escolhe_jogada(n, m):
 def usuario_escolhe_jogada(n, m):
     naoAcertou = True
     valorJogadoUsuario = int(input("Quantas peças você vai tirar? "))
-    print("")
     while (naoAcertou):
         if (valorJogadoUsuario <= m and valorJogadoUsuario > 0):
             naoAcertou = False
         else:
+            print("")
             print("Oops! Jogada inválida! Tente de novo.")
             print("")
             valorJogadoUsuario = int(input("Quantas peças você vai tirar? "))
+            print("")
     return valorJogadoUsuario
 
 
