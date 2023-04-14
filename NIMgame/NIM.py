@@ -30,14 +30,39 @@ def partida():
     m = int(input("Digite o número max de peças a serem retiradas "))
     if(n % (m+1) == 0):
         print("Você começa!")
-        while():
-            computador_escolhe_jogada(n, m)
-            usuario_escolhe_jogada(n, m)
+        while(n > 0):
+            usuarioVaiTirar = usuario_escolhe_jogada(n, m)
+            n = n - usuarioVaiTirar
+            if(usuarioVaiTirar > 1):
+                print("Você tirou " + usuarioVaiTirar + " peças.")
+            else:
+                print("Você tirou uma peça.")
+
+            if(n > 1):
+                print("Agora restam " + n + " peças no tabuleiro.")
+            else:
+                print("Agora resta apenas uma peça no tabuleiro.")
+
+            compVaiTirar = computador_escolhe_jogada(n, m)
+            n = n - compVaiTirar
+
+            if(compVaiTirar > 1):
+                print("O computador tirou " + compVaiTirar + " peças.")
+            else:
+                print("O computador tirou uma peça.")
+
+            if(n > 1):
+                print("Agora restam " + n + " peças no tabuleiro.")
+            else:
+                print("Agora resta apenas uma peça no tabuleiro.")
+            
+
+
     else:
         print("Computador começa!")
-        while():
-            usuario_escolhe_jogada(n, m)
-            computador_escolhe_jogada(n, m)
+        while(n > 0):
+            n - computador_escolhe_jogada(n, m)
+            n - usuario_escolhe_jogada(n, m)
         
     #atualiza n
     #identifica que jogo acabou
