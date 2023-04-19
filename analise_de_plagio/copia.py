@@ -79,28 +79,41 @@ def compara_assinatura(as_a, as_b):
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-    pass
+
+    #tamanho_medio_palavra = soma_tamanho_palavras / numero_total_palavras
+    
+    lista_sentencas_texto = separa_sentencas(texto)
+    print(lista_sentencas_texto)
+    print()
+    lista_frases_texto = []
+    # tem que fazer concatenando as listas + -> provavelmente fazer laços aninhadops
+    for i in lista_sentencas_texto:
+        lista_frases_texto.append (separa_frases(i)) 
+    print(lista_frases_texto)
+    print()
+
+    lista_palavras_texto = []
+    for i in lista_frases_texto:
+        lista_palavras_texto.append(separa_palavras(i))
+    print(lista_palavras_texto)
+
+
+    
+
+
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
     pass
 
 def main():
-    lista_textos = le_textos()
-    print(lista_textos)
-    print()
+    #lista_assinatura_tipica_infectado = le_assinatura()
+    #lista_textos = le_textos()
+    #print(lista_textos)
+    #print(lista_assinatura_tipica_infectado)
+    calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
 
-    lista_sentencas = separa_sentencas(lista_textos[0])
-    ##print(lista_sentencas)
-    ## SEPARA SENTENÇAS: separa nos pontos finais -> excluindo o ponto
-    print()
-
-    lista_frases = separa_frases(lista_sentencas[0])
-    ##print(lista_frases)
-    ## SEPARA FRASES: separa possivelmente nas virgulas e outras pontuações -> excluindo a virgula na lista
-    print()
-
-    lista_palavras = separa_palavras(lista_frases[0])
-    print(lista_palavras)
-
+    
 main()
+   
+
