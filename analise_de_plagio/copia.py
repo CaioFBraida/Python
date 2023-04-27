@@ -79,6 +79,38 @@ def transforma_listadelista_em_lista(lista):
         lista_unica.extend(lista)
     return lista_unica
 
+def tamanhos_palavras(lista_palavras):
+    lista_tamanhos_palavras = []
+    for palavra in lista_palavras:
+        lista_tamanhos_palavras.append(len(palavra))
+    return lista_tamanhos_palavras
+
+def calcula_tamanho_medio_palavras(texto):
+    
+    #tamanho_medio_palavra = soma_tamanho_palavras / numero_total_palavras
+    
+    lista_sentencas_texto = separa_sentencas(texto)
+    
+    lista_frases_texto = []
+    for i in lista_sentencas_texto:
+        lista_frases_texto.append (separa_frases(i)) 
+    lista_frases_texto_unica = transforma_listadelista_em_lista(lista_frases_texto)
+    
+    lista_palavras_texto = []
+    for i in lista_frases_texto_unica:
+        lista_palavras_texto.append(separa_palavras(i))
+    lista_palavras_texto_unica = transforma_listadelista_em_lista(lista_palavras_texto)
+
+    tamanhos_palavras_texto = tamanhos_palavras(lista_palavras_texto_unica)
+
+    soma_tamanho_palavras = 0
+    for tam in tamanhos_palavras_texto:
+        soma_tamanho_palavras = soma_tamanho_palavras + tam
+
+    tamanho_medio_palavra = soma_tamanho_palavras / len(lista_palavras_texto_unica)
+
+    return tamanho_medio_palavra
+            
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
     pass
@@ -86,29 +118,10 @@ def compara_assinatura(as_a, as_b):
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
 
-    #tamanho_medio_palavra = soma_tamanho_palavras / numero_total_palavras
-    
-    lista_sentencas_texto = separa_sentencas(texto)
-    print(lista_sentencas_texto)
-    print()
+    tamanho_medio_palavra = calcula_tamanho_medio_palavras(texto)
+    print(tamanho_medio_palavra)
 
 
-    lista_frases_texto = []
-    for i in lista_sentencas_texto:
-        lista_frases_texto.append (separa_frases(i)) 
-    lista_frases_texto_unica = transforma_listadelista_em_lista(lista_frases_texto)
-    
-    print(lista_frases_texto_unica)
-    print()
-
-
-    lista_palavras_texto = []
-    for i in lista_frases_texto_unica:
-        lista_palavras_texto.append(separa_palavras(i))
-    lista_palavras_texto_unica = transforma_listadelista_em_lista(lista_palavras_texto)
-
-    print(lista_palavras_texto_unica)
-    print()
 
 
     
@@ -124,8 +137,8 @@ def main():
     #lista_textos = le_textos()
     #print(lista_textos)
     #print(lista_assinatura_tipica_infectado)
-    calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
-
+    #calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
+    calcula_assinatura("bom dia caio caio")
     
 main()
    
