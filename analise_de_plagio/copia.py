@@ -73,6 +73,12 @@ def n_palavras_diferentes(lista_palavras):
 
     return len(freq)
 
+def transforma_listadelista_em_lista(lista):
+    lista_unica = []
+    for lista in lista:
+        lista_unica.extend(lista)
+    return lista_unica
+
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
     pass
@@ -85,17 +91,24 @@ def calcula_assinatura(texto):
     lista_sentencas_texto = separa_sentencas(texto)
     print(lista_sentencas_texto)
     print()
+
+
     lista_frases_texto = []
-    # tem que fazer concatenando as listas + -> provavelmente fazer laços aninhadops
     for i in lista_sentencas_texto:
         lista_frases_texto.append (separa_frases(i)) 
-    print(lista_frases_texto)
+    lista_frases_texto_unica = transforma_listadelista_em_lista(lista_frases_texto)
+    
+    print(lista_frases_texto_unica)
     print()
 
+
     lista_palavras_texto = []
-    for i in lista_frases_texto:
+    for i in lista_frases_texto_unica:
         lista_palavras_texto.append(separa_palavras(i))
-    print(lista_palavras_texto)
+    lista_palavras_texto_unica = transforma_listadelista_em_lista(lista_palavras_texto)
+
+    print(lista_palavras_texto_unica)
+    print()
 
 
     
