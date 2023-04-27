@@ -1,6 +1,6 @@
 ##PROJETO ESTUDO
-##ESQUELETO DE CÓDIGO PRONTO
-##AUTORIA PRÓPRIA SÃO AS FUNÇÕES: compara_assinatura, calcula_assinatura, avalia_textos, main.
+##ESQUELETO DE CÓDIGO PRONTO - 7 PRIMEIRAS FUNÇÃO FEITAS - TODAS AS OUTRAS AUTORIA PRÓPRIA.
+
 
 import re
 
@@ -85,10 +85,35 @@ def tamanhos_palavras(lista_palavras):
         lista_tamanhos_palavras.append(len(palavra))
     return lista_tamanhos_palavras
 
-def calcula_tamanho_medio_palavras(texto):
+def calcula_tamanho_medio_palavras(tamanhos_palavras_texto, lista_palavras_texto_unica):
     
     #tamanho_medio_palavra = soma_tamanho_palavras / numero_total_palavras
     
+    soma_tamanho_palavras = 0
+    for tam in tamanhos_palavras_texto:
+        soma_tamanho_palavras = soma_tamanho_palavras + tam
+
+    tamanho_medio_palavra = soma_tamanho_palavras / len(lista_palavras_texto_unica)
+
+    return tamanho_medio_palavra
+
+def calcula_razao_type_token(num_palavras_diferentes ,numero_total_palavras):
+    razao_type_token = num_palavras_diferentes / numero_total_palavras
+    return razao_type_token
+    
+def calcula_razao_Hapax_legomana(numero_palavras_aparecem_umavez, numero_total_palavras):
+    razao_Hapax_legomana = numero_palavras_aparecem_umavez / numero_total_palavras
+    return razao_Hapax_legomana
+
+def compara_assinatura(as_a, as_b):
+    '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
+    pass
+
+
+def calcula_assinatura(texto):
+    '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
+    
+    #criando listas de frases, palavras, sentenças, tamanho de palavras
     lista_sentencas_texto = separa_sentencas(texto)
     
     lista_frases_texto = []
@@ -100,32 +125,33 @@ def calcula_tamanho_medio_palavras(texto):
     for i in lista_frases_texto_unica:
         lista_palavras_texto.append(separa_palavras(i))
     lista_palavras_texto_unica = transforma_listadelista_em_lista(lista_palavras_texto)
-
+    
     tamanhos_palavras_texto = tamanhos_palavras(lista_palavras_texto_unica)
 
-    soma_tamanho_palavras = 0
-    for tam in tamanhos_palavras_texto:
-        soma_tamanho_palavras = soma_tamanho_palavras + tam
-
-    tamanho_medio_palavra = soma_tamanho_palavras / len(lista_palavras_texto_unica)
-
-    return tamanho_medio_palavra
-            
-def compara_assinatura(as_a, as_b):
-    '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
-
-def calcula_assinatura(texto):
-    '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-
-    tamanho_medio_palavra = calcula_tamanho_medio_palavras(texto)
-    print(tamanho_medio_palavra)
-
-
-
-
+    numero_palavras_diferentes = n_palavras_diferentes(lista_palavras_texto_unica)
     
+    numero_total_palavras = len(lista_palavras_texto_unica)
 
+    numero_palavras_aparecem_umavez = n_palavras_unicas(lista_palavras_texto_unica)
+
+    #calcula TAMANHO MEDIO PALAVRA
+    tamanho_medio_palavra = calcula_tamanho_medio_palavras(tamanhos_palavras_texto, lista_palavras_texto_unica)
+    print("tamanho médio palavra: ")
+    print(tamanho_medio_palavra)
+    print()
+
+
+    #calcula razao_type_token
+    razao_type_token = calcula_razao_type_token(numero_palavras_diferentes, numero_total_palavras)
+    print("razao type token: ")
+    print(razao_type_token)
+    print()
+
+    #calcula Razão Hapax Legomana
+    razao_Hapax_legomana = calcula_razao_Hapax_legomana(numero_palavras_aparecem_umavez, numero_total_palavras)
+    print("Razão Hapax Legomana: ")
+    print(razao_Hapax_legomana)
+    print()
 
 
 def avalia_textos(textos, ass_cp):
@@ -133,13 +159,8 @@ def avalia_textos(textos, ass_cp):
     pass
 
 def main():
-    #lista_assinatura_tipica_infectado = le_assinatura()
-    #lista_textos = le_textos()
-    #print(lista_textos)
-    #print(lista_assinatura_tipica_infectado)
     #calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
-    calcula_assinatura("bom dia caio caio")
-    
+    calcula_assinatura("bom dia caio carimbo caio")
 main()
    
 
