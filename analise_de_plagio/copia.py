@@ -1,7 +1,6 @@
 ##PROJETO ESTUDO
 ##ESQUELETO DE CÓDIGO PRONTO - 7 PRIMEIRAS FUNÇÃO FEITAS - TODAS AS OUTRAS AUTORIA PRÓPRIA.
 
-
 import re
 
 def le_assinatura():
@@ -105,6 +104,21 @@ def calcula_razao_Hapax_legomana(numero_palavras_aparecem_umavez, numero_total_p
     razao_Hapax_legomana = numero_palavras_aparecem_umavez / numero_total_palavras
     return razao_Hapax_legomana
 
+def calcula_tamanho_medio_sentenca(tamanhos_palavras_texto,lista_sentencas_texto):
+    #essa função precisa calcular o total de caracteres excluindo os caracteres que separam as sentenças e dividir pelo 
+    #numero de sentencas para achar o tamanho medio de sentencas
+    numero_sentencas = len(lista_sentencas_texto)
+    numero_total_caracteres_palavras_texto = 0
+    quantidade_espacos_entre_palavras = len(tamanhos_palavras_texto)
+    for tamanhos in tamanhos_palavras_texto:
+        numero_total_caracteres_palavras_texto = numero_total_caracteres_palavras_texto + tamanhos
+    numero_real_caracteres_texto = numero_total_caracteres_palavras_texto + (quantidade_espacos_entre_palavras - 1)
+    -(numero_sentencas - 1)
+    tamanho_medio_sentencas = numero_real_caracteres_texto / numero_sentencas
+
+    return tamanho_medio_sentencas
+
+
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
     pass
@@ -134,6 +148,7 @@ def calcula_assinatura(texto):
 
     numero_palavras_aparecem_umavez = n_palavras_unicas(lista_palavras_texto_unica)
 
+
     #calcula TAMANHO MEDIO PALAVRA
     tamanho_medio_palavra = calcula_tamanho_medio_palavras(tamanhos_palavras_texto, lista_palavras_texto_unica)
     print("tamanho médio palavra: ")
@@ -153,14 +168,23 @@ def calcula_assinatura(texto):
     print(razao_Hapax_legomana)
     print()
 
+    #calcula tamanho medio sentença
+    tamanho_medio_sentenca = calcula_tamanho_medio_sentenca(tamanhos_palavras_texto,lista_sentencas_texto)
+    print("Tamanho medio sentença: ")
+    print(tamanho_medio_sentenca)
+    print()
+
+
+
+
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
     pass
 
 def main():
-    #calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
-    calcula_assinatura("bom dia caio carimbo caio")
+    calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
+    #calcula_assinatura("caio caio.caio caio.ciao caio")
 main()
    
 
