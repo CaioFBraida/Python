@@ -112,8 +112,7 @@ def calcula_tamanho_medio_sentenca(tamanhos_palavras_texto,lista_sentencas_texto
     quantidade_espacos_entre_palavras = len(tamanhos_palavras_texto)
     for tamanhos in tamanhos_palavras_texto:
         numero_total_caracteres_palavras_texto = numero_total_caracteres_palavras_texto + tamanhos
-    numero_real_caracteres_texto = numero_total_caracteres_palavras_texto + (quantidade_espacos_entre_palavras - 1)
-    -(numero_sentencas - 1)
+    numero_real_caracteres_texto = numero_total_caracteres_palavras_texto + (quantidade_espacos_entre_palavras - 1) - (numero_sentencas - 1)
     tamanho_medio_sentencas = numero_real_caracteres_texto / numero_sentencas
 
     return tamanho_medio_sentencas
@@ -183,8 +182,11 @@ def avalia_textos(textos, ass_cp):
     pass
 
 def main():
-    calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
-    #calcula_assinatura("caio caio.caio caio.ciao caio")
+    #calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
+    calcula_assinatura("caio caio.caio caio.ciao caio")
+    lista = []
+    lista = separa_sentencas("caio caio.caio caio.ciao caio")
+    print (lista)
 main()
    
 
