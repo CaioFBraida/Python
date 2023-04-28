@@ -1,6 +1,6 @@
 ##PROJETO ESTUDO
 ##ESQUELETO DE CÓDIGO PRONTO - 7 PRIMEIRAS FUNÇÃO FEITAS - TODAS AS OUTRAS AUTORIA PRÓPRIA.
-
+##concertar funçoes tamanho medio sentença e tamanho medio frase
 import re
 
 def le_assinatura():
@@ -137,9 +137,18 @@ def calcula_tamanho_medio_frase(tamanhos_palavras_texto,lista_frases_texto_unica
     return tamanho_medio_frase
 
 def compara_assinatura(as_a, as_b):
-    '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
+    #recebe duas assinaturas e compara a diferença entre elas
+    somas = []
+    for i in range(len(as_a)):
+        somas.append(abs(as_a[i] - as_b[i]))
+    
+    somatorio = 0
+    for soma in somas:
+        somatorio = somatorio + soma
+    
+    grau_similaridade_Sab = somatorio / len(somas)
 
+    return grau_similaridade_Sab
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
@@ -168,46 +177,25 @@ def calcula_assinatura(texto):
 
     #calcula TAMANHO MEDIO PALAVRA
     tamanho_medio_palavra = calcula_tamanho_medio_palavras(tamanhos_palavras_texto, lista_palavras_texto_unica)
-    print("tamanho médio palavra: ")
-    print(tamanho_medio_palavra)
-    print()
-
-
+    
     #calcula razao_type_token
     razao_type_token = calcula_razao_type_token(numero_palavras_diferentes, numero_total_palavras)
-    print("razao type token: ")
-    print(razao_type_token)
-    print()
-
+   
     #calcula Razão Hapax Legomana
     razao_Hapax_legomana = calcula_razao_Hapax_legomana(numero_palavras_aparecem_umavez, numero_total_palavras)
-    print("Razão Hapax Legomana: ")
-    print(razao_Hapax_legomana)
-    print()
-
+    
     #calcula tamanho medio sentença
     tamanho_medio_sentenca = calcula_tamanho_medio_sentenca(tamanhos_palavras_texto,lista_sentencas_texto)
-    print("Tamanho medio sentença: ")
-    print(tamanho_medio_sentenca)
-    print()
-
+    
     #calcula complexidade de uma sentença
     complexidade_de_sentenca = calcula_complexidade_sentenca(lista_frases_texto_unica, lista_sentencas_texto)
-    print("Complexidade de sentença: ")
-    print(complexidade_de_sentenca)
-    print()
-
+    
     #calcula tamanho médio de frase
     tamanho_medio_frase = calcula_tamanho_medio_frase(tamanhos_palavras_texto, lista_frases_texto_unica)
-    print("Tamanho médio de frase: ")
-    print(tamanho_medio_frase)
-    print()
+    
+    lista_assinatura = [tamanho_medio_palavra, razao_type_token, razao_Hapax_legomana, tamanho_medio_sentenca, complexidade_de_sentenca, tamanho_medio_frase]
 
-
-
-
-
-
+    return lista_assinatura
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
@@ -215,8 +203,24 @@ def avalia_textos(textos, ass_cp):
 
 def main():
     #calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca.")
-    calcula_assinatura("caio caio, caio caio. caio ciao, caio caio")
+    #calcula_assinatura("caio caio, caio caio. caio ciao, caio caio")
     
+    ass_0 = [4.51, 0.693, 0.55, 70.82, 1.82, 38.5]
+
+    ass_texto_1 = []
+    ass_texto_1 = calcula_assinatura("Voltei-me para ela; Capitu tinha os olhos no chão. Ergueu-os logo, devagar, e ficamos a olhar um para o outro... Confissão de crianças, tu valias bem duas ou três páginas, mas quero ser poupado. Em verdade, não falamos nada; o muro falou por nós. Não nos movemos, as mãos é que se estenderam pouco a pouco, todas quatro, pegando-se, apertando-se, fundindo-se. Não marquei a hora exata daquele gesto. Devia tê-la marcado; sinto a falta de uma nota escrita naquela mesma noite, e que eu poria aqui com os erros de ortografia que trouxesse, mas não traria nenhum, tal era a diferença entre o estudante e o adolescente. Conhecia as regras do escrever, sem suspeitar as do amar; tinha orgias de latim e era virgem de mulheres.")
+    #print(ass_texto_1)
+    #print()
+
+    ass_texto_2 = []
+    ass_texto_2 = calcula_assinatura("Num fabulário ainda por encontrar será um dia lida esta fábula: A uma bordadora dum país longínquo foi encomendado pela sua rainha que bordasse, sobre seda ou cetim, entre folhas, uma rosa branca. A bordadora, como era muito jovem, foi procurar por toda a parte aquela rosa branca perfeitíssima, em cuja semelhança bordasse a sua. Mas sucedia que umas rosas eram menos belas do que lhe convinha, e que outras não eram brancas como deviam ser. Gastou dias sobre dias, chorosas horas, buscando a rosa que imitasse com seda, e, como nos países longínquos nunca deixa de haver pena de morte, ela sabia bem que, pelas leis dos contos como este, não podiam deixar de a matar se ela não bordasse a rosa branca. Por fim, não tendo melhor remédio, bordou de memória a rosa que lhe haviam exigido. Depois de a bordar foi compará-la com as rosas brancas que existem realmente nas roseiras. Sucedeu que todas as rosas brancas se pareciam exactamente com a rosa que ela bordara, que cada uma delas era exactamente aquela. Ela levou o trabalho ao palácio e é de supor que casasse com o príncipe. No fabulário, onde vem, esta fábula não traz moralidade. Mesmo porque, na idade de ouro, as fábulas não tinham moralidade nenhuma.")
+    #print(ass_texto_2)
+    #print()
+    print(compara_assinatura(ass_0, ass_texto_1))
+    
+    #ass = []
+    #ass = calcula_assinatura("Então resolveu ir brincar com a Máquina pra ser também imperador dos filhos da mandioca. Mas as três cunhas deram muitas risadas e falaram que isso de deuses era gorda mentira antiga, que não tinha deus não e que com a máquina ninguém não brinca porque ela mata. A máquina não era deus não, nem possuía os distintivos femininos de que o herói gostava tanto. Era feita pelos homens. Se mexia com eletricidade com fogo com água com vento com fumo, os homens aproveitando as forças da natureza. Porém jacaré acreditou? nem o herói! Se levantou na cama e com um gesto, esse sim! bem guaçu de desdém, tó! batendo o antebraço esquerdo dentro do outro dobrado, mexeu com energia a munheca direita pras três cunhas e partiu. Nesse instante, falam, ele inventou o gesto famanado de ofensa: a pacova.")
+    #print(ass)
 main()
    
 
