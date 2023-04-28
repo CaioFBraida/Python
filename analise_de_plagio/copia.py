@@ -121,8 +121,6 @@ def calcula_complexidade_sentenca(lista_frases_texto, lista_sentencas_texto):
     #complexidade_sentenca = numero_total_frases / numero_total_sentencas
     numero_total_frases = len(lista_frases_texto)
     numero_total_sentencas = len(lista_sentencas_texto)
-    print(numero_total_frases)
-    print(numero_total_sentencas)
     complexidade_sentenca = numero_total_frases / numero_total_sentencas
     return complexidade_sentenca
 
