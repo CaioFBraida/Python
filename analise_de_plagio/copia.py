@@ -1,6 +1,5 @@
 ##PROJETO ESTUDO
-##ESQUELETO DE CÓDIGO PRONTO - 7 PRIMEIRAS FUNÇÃO FEITAS - TODAS AS OUTRAS AUTORIA PRÓPRIA.
-##concertar funçoes tamanho medio sentença e tamanho medio frase
+## 7 PRIMEIRAS FUNÇÕES PRONTAS - TODAS AS OUTRAS AUTORIA PRÓPRIA.
 
 import re
 
@@ -155,8 +154,7 @@ def compara_assinatura(as_a, as_b):
     return grau_similaridade_Sab
 
 def calcula_assinatura(texto):
-    '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-    
+    #Essa funcao recebe um texto e deve devolver a assinatura do texto.
     
     #criando listas de frases, palavras, sentenças, tamanho de palavras
     lista_sentencas_texto = separa_sentencas(texto)
@@ -203,7 +201,7 @@ def calcula_assinatura(texto):
     return lista_assinatura
 
 def avalia_textos(textos, ass_cp):
-    '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
+    #Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.
 
     lista_assinaturas_texto = []
     for i in range(len(textos)):
@@ -237,5 +235,5 @@ def main():
     print()
     print("O autor do texto " +  str(numero_texto_infectado) +  " está infectado com COH-PIAH")
 
-
+main()
 
