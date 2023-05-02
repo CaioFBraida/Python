@@ -214,7 +214,7 @@ def avalia_textos(textos, ass_cp):
         lista_grau_similaridade_textos.append(compara_assinatura(lista_assinaturas_texto[i], ass_cp))
     
     valor_do_texto_infectado = lista_grau_similaridade_textos[0]
-    numero_do_texto_infectado = 0
+    numero_do_texto_infectado = 1
     for i in range(len(lista_grau_similaridade_textos)):
         if valor_do_texto_infectado > lista_grau_similaridade_textos[i]:
             valor_do_texto_infectado = lista_grau_similaridade_textos[i]
